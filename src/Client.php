@@ -13,7 +13,7 @@ class Client {
     const DEFAULT_CHANNEL = '#random';
     public $config = array();
     public $client;
-    public $debug = true;
+    public $debug = false;
 
     public function __construct(array $config = array())
     {
