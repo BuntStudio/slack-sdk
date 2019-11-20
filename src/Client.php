@@ -9,7 +9,7 @@ class Client {
     const CLIENT_NAME = 'Slack-SDK';
     const CLIENT_VERSION = '1.1.0';
     const CLIENT_URL = 'https://github.com/corykeane/slack-sdk';
-    const API_URL = 'https://slack.com/api';
+    const API_URL = 'https://slack.com/api/';
     const DEFAULT_CHANNEL = '#random';
     public $config = array();
     public $client;
