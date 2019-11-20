@@ -1,9 +1,12 @@
 <?php namespace CoryKeane\Slack;
 
-use Guzzle\Http\Message\Response as GuzzleResponse;
+use GuzzleHttp\Psr7\Response as GuzzleResponse;
 
 class Response
 {
+    /**
+     * @var GuzzleResponse
+     */
     protected $rawResponse;
     protected $response;
     protected $errorTypes = array(
@@ -17,7 +20,7 @@ class Response
     public function __construct(GuzzleResponse $response)
     {
         $this->rawResponse = $response;
-        $this->response = json_decode(json_encode($this->rawResponse->json()));
+        $this->response = json_decode($response->getBody(), false);
     }
 
     public function statusCode()
