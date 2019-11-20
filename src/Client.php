@@ -93,7 +93,7 @@ class Client {
     public function users()
     {
         $query = $this->getConfig(array('token'));
-        $response = $this->request('users.list', $query)->send()->json();
+        $response = json_decode($this->request('users.list', $query), true);
         $users = array();
         foreach ($response['members'] as $member)
         {
