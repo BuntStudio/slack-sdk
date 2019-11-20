@@ -1,6 +1,6 @@
 <?php namespace CoryKeane\Slack;
 
-use GuzzleHttp\Psr7\Response as GuzzleResponse;
+use Psr\Http\Message\ResponseInterface as GuzzleResponse;
 
 class Response
 {
