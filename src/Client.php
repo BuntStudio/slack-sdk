@@ -65,16 +65,24 @@ class Client {
 
     public function request($endpoint = null, array $query = array())
     {
-        return $this->client->get(
-            $endpoint,
-            [
-                'query' => $query,
-                'debug' => $this->debug,
-                'headers' => [
-                    'User-Agent' => $this->setUserAgent()
+        try {
+            return $this->client->get(
+                $endpoint,
+                [
+                    'query' => $query,
+                    'debug' => $this->debug,
+                    'headers' => [
+                        'User-Agent' => $this->setUserAgent()
+                    ]
                 ]
-            ]
-        );
+            );
+        }  catch (ClientException $e) {
+            if ($e->getCode() === 429) {
+                // Rate limit; retry
+                usleep(60 * 1e6);
+                return $this->request($endpoint, $query);
+            }
+        }
     }
 
     public function listen($simulate = false)
