@@ -3,6 +3,7 @@
 use GuzzleHttp\Client as GuzzleClient;
 
 use CoryKeane\Slack\Webhooks\Incoming as IncomingWebhook;
+use GuzzleHttp\Exception\ClientException;
 
 class Client {
 
